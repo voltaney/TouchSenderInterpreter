@@ -5,6 +5,26 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Copyright>Copyright (c) Voltaney 2025</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageId>Voltaney.$(AssemblyName)</PackageId>
+    <RepositoryUrl>https://github.com/voltaney/TouchSenderInterpreter</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/voltaney/TouchSenderInterpreter/releases/</PackageReleaseNotes>
+    <Authors>Voltaney</Authors>
+    <Description>Parser library for data sent from mobile application "Touch Sender".</Description>
+    <PackageProjectUrl>https://github.com/voltaney/TouchSenderInterpreter</PackageProjectUrl>
+    <Version>0.1.0</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
