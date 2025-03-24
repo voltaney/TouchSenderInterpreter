@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchSenderInterpreter", "TouchSenderInterpreter\TouchSenderInterpreter.csproj", "{6EF44536-80D8-473F-A04F-5F9056E0B0EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchSenderInterpreter.ConsoleAppDemo", "TouchSenderInterpreter.ConsoleAppDemo\TouchSenderInterpreter.ConsoleAppDemo.csproj", "{E8999466-2172-4215-9CFF-BB4F23FC4D8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchSenderInterpreter.Test", "TouchSenderInterpreter.Test\TouchSenderInterpreter.Test.csproj", "{70F556A4-1B75-4F2C-8675-7DF119901212}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EF44536-80D8-473F-A04F-5F9056E0B0EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF44536-80D8-473F-A04F-5F9056E0B0EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF44536-80D8-473F-A04F-5F9056E0B0EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF44536-80D8-473F-A04F-5F9056E0B0EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8999466-2172-4215-9CFF-BB4F23FC4D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8999466-2172-4215-9CFF-BB4F23FC4D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8999466-2172-4215-9CFF-BB4F23FC4D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8999466-2172-4215-9CFF-BB4F23FC4D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F556A4-1B75-4F2C-8675-7DF119901212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F556A4-1B75-4F2C-8675-7DF119901212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F556A4-1B75-4F2C-8675-7DF119901212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F556A4-1B75-4F2C-8675-7DF119901212}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F81F0D88-A812-4EAA-BEB9-81A06BCE0B71}
+	EndGlobalSection
+EndGlobal
