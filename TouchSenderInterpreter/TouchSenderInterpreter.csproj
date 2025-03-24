@@ -13,7 +13,7 @@
     <Authors>Voltaney</Authors>
     <Description>Parser library for data sent from mobile application "Touch Sender".</Description>
     <PackageProjectUrl>https://github.com/voltaney/TouchSenderInterpreter</PackageProjectUrl>
-    <Version>0.1.0</Version>
+    <PackageTags>Touch Sender;TouchSender</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
