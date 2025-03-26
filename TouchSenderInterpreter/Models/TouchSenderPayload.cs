@@ -2,15 +2,15 @@
 {
     public record TouchSenderPayload(
             int Id,
-            Deviceinfo DeviceInfo,
-            Singletouch SingleTouch
+            DeviceInfo DeviceInfo,
+            SingleTouch SingleTouch
         )
     {
-        public Singletouch SingleTouchRatio
+        public SingleTouch SingleTouchRatio
         {
             get
             {
-                return new Singletouch(
+                return new SingleTouch(
                     X: SingleTouch.X / DeviceInfo.Width,
                     Y: SingleTouch.Y / DeviceInfo.Height
                 );
@@ -18,12 +18,12 @@
         }
     };
 
-    public record Deviceinfo(
+    public record DeviceInfo(
             int Width,
             int Height
         );
 
-    public record Singletouch(
+    public record SingleTouch(
             double? X,
             double? Y
         );

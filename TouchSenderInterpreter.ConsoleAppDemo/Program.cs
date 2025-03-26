@@ -1,5 +1,4 @@
 ﻿using System.Net.Sockets;
-using System.Text;
 using System.Text.Json;
 
 using TouchSenderInterpreter.Models;
@@ -66,7 +65,6 @@ namespace TouchSenderInterpreter.ConsoleAppDemo
                 while (true)
                 {
                     var receivedResults = await udpClient.ReceiveAsync(cts);
-                    var receivedText = Encoding.UTF8.GetString(receivedResults.Buffer);
                     touchSenderResult = Interpreter.Read(receivedResults.Buffer);
                 }
             }

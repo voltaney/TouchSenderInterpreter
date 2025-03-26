@@ -11,8 +11,8 @@ namespace TouchSenderInterpreter.Test
     internal class TestDataGenerator
     {
         static readonly int ExampleId = 10;
-        static readonly Deviceinfo FullDeviceInfo = new(Width: 1920, Height: 1080);
-        static readonly Singletouch FullSingleTouch = new(X: 0.5, Y: 0.5);
+        static readonly DeviceInfo FullDeviceInfo = new(Width: 1920, Height: 1080);
+        static readonly SingleTouch FullSingleTouch = new(X: 0.5, Y: 0.5);
         static readonly TouchSenderPayload FullPayload = new(ExampleId, FullDeviceInfo, FullSingleTouch);
         public static IEnumerable<object[]> FullPayloads()
         {
