@@ -23,15 +23,11 @@ namespace TouchSenderInterpreter.Test
         }
 
         // Generate payloads with null values
-        public static IEnumerable<object[]> PayloadsWithSingleTouchNullX()
+        public static IEnumerable<object[]> PayloadsWithSingleTouchNull()
         {
             yield return new object[]
             {
-                FullPayload with { SingleTouch = FullSingleTouch with { X=null } }
-            };
-            yield return new object[]
-            {
-                FullPayload with { SingleTouch = FullSingleTouch with { X=null, Y=null } }
+                FullPayload with { SingleTouch = null }
             };
         }
 
@@ -43,7 +39,7 @@ namespace TouchSenderInterpreter.Test
             {
                 payload1,
                 payload1 with {
-                    SingleTouch = FullSingleTouch with { X = null }
+                    SingleTouch = null
                 }
             };
         }
@@ -79,11 +75,10 @@ namespace TouchSenderInterpreter.Test
             Assert.True(result.IsSuccess);
             Assert.NotNull(result.Payload);
             Assert.Equal(payload, result.Payload);
-            Assert.NotNull(result.Payload.SingleTouchRatio.X);
         }
 
         [Theory]
-        [MemberData(nameof(TestDataGenerator.PayloadsWithSingleTouchNullX), MemberType = typeof(TestDataGenerator))]
+        [MemberData(nameof(TestDataGenerator.PayloadsWithSingleTouchNull), MemberType = typeof(TestDataGenerator))]
         public void Read_ValidNullJson_ReturnsSuccessResult(TouchSenderPayload payload)
         {
             // Log
@@ -100,7 +95,6 @@ namespace TouchSenderInterpreter.Test
             Assert.True(result.IsSuccess);
             Assert.NotNull(result.Payload);
             Assert.Equal(payload, result.Payload);
-            Assert.Null(result.Payload.SingleTouchRatio.X);
         }
         [Theory]
         [InlineData("invaid json")] // no closing brace
