@@ -3,13 +3,15 @@
     public record TouchSenderPayload(
             int Id,
             DeviceInfo DeviceInfo,
-            SingleTouch SingleTouch
+            SingleTouch? SingleTouch = null
         )
     {
-        public SingleTouch SingleTouchRatio
+        public SingleTouch? SingleTouchRatio
         {
             get
             {
+                // If SingleTouch is null, return null
+                if (SingleTouch == null) return null;
                 return new SingleTouch(
                     X: SingleTouch.X / DeviceInfo.Width,
                     Y: SingleTouch.Y / DeviceInfo.Height
@@ -24,7 +26,7 @@
         );
 
     public record SingleTouch(
-            double? X,
-            double? Y
+            double X,
+            double Y
         );
 }
