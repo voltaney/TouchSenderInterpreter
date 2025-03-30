@@ -13,7 +13,7 @@ namespace TouchSenderInterpreter.ConsoleAppDemo
         {
             using var cts = new CancellationTokenSource();
             var task = ReceiveTouchSenderPayload(cts.Token);
-            Console.WriteLine("Press 'Q' to quit, 'C' to show the latest ZigSim data");
+            Console.WriteLine("Press 'Q' to quit, 'C' to show the latest TouchSender data");
             int startRow = Console.GetCursorPosition().Top;
 
             var jsonOption = new JsonSerializerOptions()
