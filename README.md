@@ -4,6 +4,7 @@
 [![NuGet Version](https://img.shields.io/nuget/v/Voltaney.TouchSenderInterpreter)](https://www.nuget.org/packages/Voltaney.TouchSenderInterpreter/)
 [![CI](https://github.com/voltaney/TouchSenderInterpreter/actions/workflows/ci.yml/badge.svg)](https://github.com/voltaney/TouchSenderInterpreter/actions/workflows/ci.yml)
 ![dotnet Version](https://img.shields.io/badge/.NET-8.0-blueviolet)
+![dotnet Version](https://img.shields.io/badge/.NET-9.0-blueviolet)
 
 Parser library for data sent from the mobile application **Touch Sender**.
 
@@ -64,10 +65,6 @@ If the JSON data is successfully parsed, a result object with the following stru
     "SingleTouch": {
       "X": 248.33333333333334,
       "Y": 387
-    },
-    "SingleTouchRatio": {
-      "X": 0.6898148148148149,
-      "Y": 0.48375
     }
   },
   "IsSuccess": true,
