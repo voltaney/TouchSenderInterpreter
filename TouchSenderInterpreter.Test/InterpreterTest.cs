@@ -139,6 +139,39 @@ namespace TouchSenderInterpreter.Test
         }
 
         /// <summary>
+        /// Test the Read method with an empty JSON payload.
+        /// 
+        /// for .NET 9.0 or greater, it should return a failure result
+        /// for .NET 8.0 or lower, it should return a success result with null payload
+        /// </summary>
+        [Theory]
+        [InlineData("{}")]
+        [InlineData("{\"Id\":0,\"DeviceInfo\":null,\"SingleTouch\":null}")]
+        public void Read_EmptyJson_ReturnsUnsucceededResult(string invalidJson)
+        {
+            // Log
+            output.WriteLine(invalidJson);
+
+            // Arrange
+            var input = Encoding.UTF8.GetBytes(invalidJson);
+
+            // Act
+            var result = Interpreter.Read(input);
+            output.WriteLine(result.ToString());
+
+            // Assert
+#if NET9_0_OR_GREATER
+            Assert.False(result.IsSuccess);
+            Assert.Null(result.Payload);
+            Assert.NotNull(result.ErrorMessage);
+#else
+            Assert.True(result.IsSuccess);
+            Assert.NotNull(result.Payload);
+            Assert.Null(result.ErrorMessage);
+#endif
+        }
+
+        /// <summary>
         /// Test the Equals method with different payloads
         /// </summary>
         [Theory]
