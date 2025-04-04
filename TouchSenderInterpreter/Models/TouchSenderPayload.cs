@@ -4,21 +4,7 @@
             int Id,
             DeviceInfo DeviceInfo,
             SingleTouch? SingleTouch = null
-        )
-    {
-        public SingleTouch? SingleTouchRatio
-        {
-            get
-            {
-                // If SingleTouch is null, return null
-                if (SingleTouch == null) return null;
-                return new SingleTouch(
-                    X: SingleTouch.X / DeviceInfo.Width,
-                    Y: SingleTouch.Y / DeviceInfo.Height
-                );
-            }
-        }
-    };
+        );
 
     public record DeviceInfo(
             int Width,
