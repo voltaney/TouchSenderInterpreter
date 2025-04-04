@@ -14,6 +14,10 @@ namespace TouchSenderInterpreter.Test
         static readonly DeviceInfo FullDeviceInfo = new(Width: 1920, Height: 1080);
         static readonly SingleTouch FullSingleTouch = new(X: 0.5, Y: 0.5);
         static readonly TouchSenderPayload FullPayload = new(ExampleId, FullDeviceInfo, FullSingleTouch);
+
+        /// <summary>
+        /// Generate payloads with full data
+        /// </summary>
         public static IEnumerable<object[]> FullPayloads()
         {
             yield return new object[]
@@ -22,7 +26,9 @@ namespace TouchSenderInterpreter.Test
             };
         }
 
-        // Generate payloads with null values
+        /// <summary>
+        /// Generate payloads with some null values
+        /// </summary>
         public static IEnumerable<object[]> PayloadsWithSingleTouchNull()
         {
             yield return new object[]
@@ -31,7 +37,9 @@ namespace TouchSenderInterpreter.Test
             };
         }
 
-        // Generate payloads with different values
+        /// <summary>
+        /// Generate payloads with different values
+        /// </summary>
         public static IEnumerable<object[]> DifferenctPayloads()
         {
             var payload1 = new TouchSenderPayload(ExampleId, FullDeviceInfo, FullSingleTouch);
@@ -44,7 +52,9 @@ namespace TouchSenderInterpreter.Test
             };
         }
 
-        // Generate payloads with same values
+        /// <summary>
+        /// Generate payloads with same values but different references
+        /// </summary>
         public static IEnumerable<object[]> SamePayloads()
         {
             var payload1 = new TouchSenderPayload(ExampleId, FullDeviceInfo, FullSingleTouch);
@@ -54,9 +64,14 @@ namespace TouchSenderInterpreter.Test
             yield return new object[] { payload1, payload1 with { } };
         }
     }
+
     // Inject ITestOutputHelper to write logs
     public class InterpreterTest(ITestOutputHelper output)
     {
+
+        /// <summary>
+        /// Test the Read method with a valid full JSON payload
+        /// </summary>
         [Theory]
         [MemberData(nameof(TestDataGenerator.FullPayloads), MemberType = typeof(TestDataGenerator))]
         public void Read_ValidFullJson_ReturnsSuccessResult(TouchSenderPayload payload)
@@ -77,6 +92,9 @@ namespace TouchSenderInterpreter.Test
             Assert.Equal(payload, result.Payload);
         }
 
+        /// <summary>
+        /// Test the Read method with a valid JSON payload with null values
+        /// </summary>
         [Theory]
         [MemberData(nameof(TestDataGenerator.PayloadsWithSingleTouchNull), MemberType = typeof(TestDataGenerator))]
         public void Read_ValidNullJson_ReturnsSuccessResult(TouchSenderPayload payload)
@@ -96,6 +114,10 @@ namespace TouchSenderInterpreter.Test
             Assert.NotNull(result.Payload);
             Assert.Equal(payload, result.Payload);
         }
+
+        /// <summary>
+        /// Test the Read method with an invalid JSON payload
+        /// </summary>
         [Theory]
         [InlineData("invaid json")] // no closing brace
         [InlineData("{")] // missing closing brace
@@ -116,6 +138,42 @@ namespace TouchSenderInterpreter.Test
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Test the Read method with an empty JSON payload.
+        /// 
+        /// for .NET 9.0 or greater, it should return a failure result
+        /// for .NET 8.0 or lower, it should return a success result with null payload
+        /// </summary>
+        [Theory]
+        [InlineData("{}")]
+        [InlineData("{\"Id\":0,\"DeviceInfo\":null,\"SingleTouch\":null}")]
+        public void Read_EmptyJson_ReturnsUnsucceededResult(string invalidJson)
+        {
+            // Log
+            output.WriteLine(invalidJson);
+
+            // Arrange
+            var input = Encoding.UTF8.GetBytes(invalidJson);
+
+            // Act
+            var result = Interpreter.Read(input);
+            output.WriteLine(result.ToString());
+
+            // Assert
+#if NET9_0_OR_GREATER
+            Assert.False(result.IsSuccess);
+            Assert.Null(result.Payload);
+            Assert.NotNull(result.ErrorMessage);
+#else
+            Assert.True(result.IsSuccess);
+            Assert.NotNull(result.Payload);
+            Assert.Null(result.ErrorMessage);
+#endif
+        }
+
+        /// <summary>
+        /// Test the Equals method with different payloads
+        /// </summary>
         [Theory]
         [MemberData(nameof(TestDataGenerator.DifferenctPayloads), MemberType = typeof(TestDataGenerator))]
         public void Equals_DifferentPayloads_ReturnsFalse(TouchSenderPayload payload1, TouchSenderPayload payload2)
@@ -127,6 +185,9 @@ namespace TouchSenderInterpreter.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Test the Equals method with same payloads
+        /// </summary>
         [Theory]
         [MemberData(nameof(TestDataGenerator.SamePayloads), MemberType = typeof(TestDataGenerator))]
         public void Equals_SamePayloads_ReturnsTrue(TouchSenderPayload payload1, TouchSenderPayload payload2)

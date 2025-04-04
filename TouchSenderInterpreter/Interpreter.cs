@@ -9,7 +9,11 @@ namespace TouchSenderInterpreter
 
         private static readonly JsonSerializerOptions _options = new()
         {
-            PropertyNameCaseInsensitive = true
+            PropertyNameCaseInsensitive = true,
+#if NET9_0_OR_GREATER
+            RespectNullableAnnotations = true,
+            RespectRequiredConstructorParameters = true,
+#endif
         };
 
         public static TouchSenderResult Read(byte[] input)
