@@ -73,6 +73,6 @@ If the JSON data is successfully parsed, a result object with the following stru
 ```
 
 ## Deployment
-- Create a new release based on release-drafter.
-- When the version tag (e.g., v1.0.0) is added, the GitHub Actions workflow for the release is triggered.
-- The workflow builds the package (e.g., .nupkg file) and attaches it to the release.
+- Create a new release based on `release-drafter`.
+- When the version tag (e.g., `v1.0.0`) is added, the GitHub Actions workflow for the release is triggered.
+- The workflow builds the package (e.g., `.nupkg` file) and attaches it to the release.
