@@ -6,7 +6,7 @@
 ![dotnet Version](https://img.shields.io/badge/.NET-8.0-blueviolet)
 ![dotnet Version](https://img.shields.io/badge/.NET-9.0-blueviolet)
 
-Parser library for data sent from the mobile application **Touch Sender**.
+Parser library for data sent from the mobile application [**Touch Sender**](https://github.com/voltaney/touch-sender).
 
 ## Usage
 
