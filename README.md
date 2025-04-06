@@ -6,7 +6,7 @@
 ![dotnet Version](https://img.shields.io/badge/.NET-8.0-blueviolet)
 ![dotnet Version](https://img.shields.io/badge/.NET-9.0-blueviolet)
 
-Parser library for data sent from the mobile application **Touch Sender**.
+Parser library for data sent from the mobile application [**Touch Sender**](https://github.com/voltaney/touch-sender).
 
 ## Usage
 
@@ -71,3 +71,8 @@ If the JSON data is successfully parsed, a result object with the following stru
   "ErrorMessage": null
 }
 ```
+
+## Deployment
+- Create a new release based on `release-drafter`.
+- When the version tag (e.g., `v1.0.0`) is added, the GitHub Actions workflow for the release is triggered.
+- The workflow builds the package (e.g., `.nupkg` file) and attaches it to the release.
